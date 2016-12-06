@@ -132,7 +132,7 @@ namespace QuizGame.ViewModel
         /// <summary>
         /// The manager that sends UDP advertisement messages and manages a list of participants.
         /// </summary>
-        private UdpManager _manager = new UdpManager();
+        private DnssdManager _manager = new DnssdManager();
 
         /// <summary>
         /// The list of communication channels to send messages to participants.
@@ -545,7 +545,7 @@ namespace QuizGame.ViewModel
         /// </summary>
         private async Task StartAdvertisingGameAsync(string name)
         {
-            _manager.AdvertiserMessage = name;
+            _manager.InstanceName = name;
             await _manager.StartAdvertisingAsync();
             await _managerCommunicationChannel.StartListeningAsync();
         }
